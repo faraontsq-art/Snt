@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Официальный сайт СНТ «Быковка»">
+  <title>СНТ «Быковка» — официальный сайт</title>
+  <style>
+    :root {
+      --green: #294b3b;
+      --green-light: #eaf0eb;
+      --ink: #202923;
+      --muted: #68736c;
+      --paper: #fbfcfa;
+      --line: #e4e9e4;
+      --white: #fff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    header {
+      height: 78px; display: flex; align-items: center;
+      border-bottom: 1px solid var(--line); background: rgba(251,252,250,.94);
+    }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: -.02em; }
+    .brand-mark {
+      width: 38px; height: 38px; display: grid; place-items: center;
+      border-radius: 12px; background: var(--green); color: white; font-size: 19px;
+    }
+    .nav-links { display: flex; gap: 28px; color: var(--muted); font-size: 14px; }
+    .nav-links a:hover { color: var(--green); }
+    .menu { display: none; border: 0; background: none; font-size: 24px; color: var(--green); }
+    .hero { padding: 92px 0 86px; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 54px; align-items: center; }
+    .eyebrow { color: var(--green); font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { margin: 16px 0 20px; max-width: 650px; font-size: clamp(42px, 6vw, 68px); line-height: 1.06; letter-spacing: -.055em; font-weight: 650; }
+    .lead { max-width: 540px; color: var(--muted); font-size: 18px; margin: 0 0 30px; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border-radius: 9px; font-size: 14px; font-weight: 650; transition: .2s; }
+    .btn-primary { background: var(--green); color: white; }
+    .btn-primary:hover { background: #1e3b2d; transform: translateY(-1px); }
+    .btn-secondary { border: 1px solid var(--line); background: white; }
+    .btn-secondary:hover { border-color: var(--green); }
+    .hero-card {
+      min-height: 360px; padding: 30px; border-radius: 18px; overflow: hidden;
+      background: linear-gradient(145deg, #dce8dd, #a8c0aa);
+      position: relative; display: flex; flex-direction: column; justify-content: flex-end;
+    }
+    .hero-card:before, .hero-card:after {
+      content: ""; position: absolute; border-radius: 50%; background: rgba(255,255,255,.28);
+    }
+    .hero-card:before { width: 330px; height: 330px; right: -55px; top: -90px; }
+    .hero-card:after { width: 230px; height: 230px; right: 100px; top: 75px; background: rgba(41,75,59,.12); }
+    .landscape { position: absolute; inset: 0; overflow: hidden; }
+    .hill { position: absolute; bottom: -100px; width: 130%; height: 220px; border-radius: 50% 50% 0 0; background: #78977d; transform: rotate(-8deg); }
+    .hill.two { bottom: -145px; left: -25%; background: #52745c; transform: rotate(8deg); }
+    .hero-card-content { position: relative; z-index: 1; color: white; }
+    .hero-card-content strong { display: block; font-size: 22px; }
+    .hero-card-content span { font-size: 13px; opacity: .9; }
+    section { padding: 76px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 32px; }
+    h2 { margin: 8px 0 0; font-size: clamp(30px, 4vw, 42px); line-height: 1.15; letter-spacing: -.04em; font-weight: 650; }
+    .section-desc { color: var(--muted); max-width: 430px; margin: 0; }
+    .about { background: white; }
+    .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .feature { padding: 25px; border: 1px solid var(--line); border-radius: 14px; }
+    .feature-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px; background: var(--green-light); color: var(--green); font-size: 20px; margin-bottom: 20px; }
+    .feature h3 { margin: 0 0 8px; font-size: 17px; }
+    .feature p { margin: 0; color: var(--muted); font-size: 14px; }
+    .news-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 16px; }
+    .notice { padding: 28px; background: white; border: 1px solid var(--line); border-radius: 14px; }
+    .notice .date { color: var(--green); font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .notice h3 { margin: 10px 0; font-size: 21px; }
+    .notice p { color: var(--muted); margin: 0; font-size: 14px; }
+    .notice-list { display: grid; gap: 16px; }
+    .notice.small h3 { font-size: 17px; }
+    .documents { background: var(--green-light); }
+    .doc-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .doc { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 20px; background: white; border-radius: 10px; font-size: 14px; }
+    .doc span:last-child { color: var(--green); font-size: 20px; }
+    .contacts-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; }
+    .contact-lines { display: grid; gap: 20px; margin-top: 28px; }
+    .contact-line small { display: block; color: var(--muted); margin-bottom: 3px; }
+    .contact-line strong { font-size: 16px; font-weight: 600; }
+    .contact-panel { padding: 30px; background: white; border: 1px solid var(--line); border-radius: 14px; }
+    .contact-panel h3 { margin: 0 0 8px; font-size: 21px; }
+    .contact-panel p { margin: 0 0 20px; color: var(--muted); font-size: 14px; }
+    .contact-panel a { display: inline-block; margin-top: 6px; }
+    footer { padding: 26px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; }
+    @media (max-width: 760px) {
+      .nav-links { display: none; position: absolute; top: 78px; left: 0; right: 0; padding: 20px; background: white; border-bottom: 1px solid var(--line); flex-direction: column; gap: 16px; }
+      .nav-links.open { display: flex; }
+      .menu { display: block; }
+      .hero { padding: 62px 0; }
+      .hero-grid, .contacts-grid, .news-grid { grid-template-columns: 1fr; }
+      .hero-card { min-height: 280px; }
+      section { padding: 58px 0; }
+      .section-head { display: block; }
+      .section-desc { margin-top: 14px; }
+      .features { grid-template-columns: 1fr; }
+      .doc-list { grid-template-columns: 1fr; }
+      .footer-row { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top"><span class="brand-mark">Б</span><span>СНТ «Быковка»</span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about">О товариществе</a>
+        <a href="#news">Новости</a>
+        <a href="#documents">Документы</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <button class="menu" aria-label="Открыть меню" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="wrap hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Садовое некоммерческое товарищество</div>
+          <h1>СНТ<br>«Быковка»</h1>
+          <p class="lead">Информация для жителей, важные объявления и документы товарищества — в одном месте.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#news">Последние новости</a>
+            <a class="btn btn-secondary" href="#contacts">Связаться с правлением</a>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Иллюстрация загородной природы">
+          <div class="landscape"><div class="hill"></div><div class="hill two"></div></div>
+          <div class="hero-card-content"><strong>Место, которое объединяет</strong><span>СНТ «Быковка»</span></div>
+        </div>
+      </div>
+    </div>
+
+    <section class="about" id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">О нас</div><h2>О товариществе</h2></div>
+          <p class="section-desc">Здесь можно разместить краткую историю СНТ, информацию о территории, инфраструктуре и работе правления.</p>
+        </div>
+        <div class="features">
+          <article class="feature"><div class="feature-icon">⌂</div><h3>Жизнь товарищества</h3><p>Новости, собрания и важные события для собственников участков.</p></article>
+          <article class="feature"><div class="feature-icon">♧</div><h3>Общее пространство</h3><p>Информация о дорогах, освещении, коммуникациях и благоустройстве.</p></article>
+          <article class="feature"><div class="feature-icon">▤</div><h3>Открытая информация</h3><p>Документы, решения и полезные материалы в удобном доступе.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="news">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">Актуальное</div><h2>Новости и объявления</h2></div>
+          <p class="section-desc">Публикуйте здесь уведомления о собраниях, работах на территории и других событиях.</p>
+        </div>
+        <div class="news-grid">
+          <article class="notice">
+            <div class="date">Объявление · дата публикации</div>
+            <h3>Информация для жителей СНТ</h3>
+            <p>Замените этот текст актуальным объявлением: укажите дату, время, место проведения собрания или подробности запланированных работ.</p>
+          </article>
+          <div class="notice-list">
+            <article class="notice small"><div class="date">Новости</div><h3>Плановые работы</h3><p>Добавьте описание предстоящих работ и сроки их проведения.</p></article>
+            <article class="notice small"><div class="date">Важно</div><h3>Обратная связь</h3><p>Укажите, куда жители могут направить вопросы и предложения.</p></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="documents" id="documents">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="eyebrow">Полезная информация</div><h2>Документы</h2></div>
+          <p class="section-desc">Добавьте ссылки на устав, протоколы собраний, смету, отчёты и другие документы СНТ.</p>
+        </div>
+        <div class="doc-list">
+          <a class="doc" href="#" onclick="alert('Добавьте ссылку на файл устава'); return false;"><span>Устав СНТ</span><span>↗</span></a>
+          <a class="doc" href="#" onclick="alert('Добавьте ссылку на протокол'); return false;"><span>Протоколы общих собраний</span><span>↗</span></a>
+          <a class="doc" href="#" onclick="alert('Добавьте ссылку на смету'); return false;"><span>Смета и финансовый отчёт</span><span>↗</span></a>
+          <a class="doc" href="#" onclick="alert('Добавьте ссылку на правила'); return false;"><span>Правила и полезные материалы</span><span>↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts">
+      <div class="wrap contacts-grid">
+        <div>
+          <div class="eyebrow">На связи</div>
+          <h2>Контакты</h2>
+          <p class="section-desc" style="margin-top:16px">По вопросам работы товарищества обращайтесь к правлению СНТ «Быковка».</p>
+          <div class="contact-lines">
+            <div class="contact-line"><small>Телефон</small><strong>Укажите номер телефона</strong></div>
+            <div class="contact-line"><small>Электронная почта</small><strong>Укажите адрес электронной почты</strong></div>
+            <div class="contact-line"><small>Адрес</small><strong>Укажите адрес СНТ</strong></div>
+          </div>
+        </div>
+        <div class="contact-panel">
+          <h3>Есть вопрос?</h3>
+          <p>Напишите правлению по электронной почте или позвоните по указанному телефону. Контактные данные нужно заполнить перед публикацией сайта.</p>
+          <a class="btn btn-primary" href="mailto:ПОЧТА_СНТ">Написать письмо</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>© СНТ «Быковка»</span>
+      <span>Официальная информация товарищества</span>
+    </div>
+  </footer>
+</body>
+</html>
